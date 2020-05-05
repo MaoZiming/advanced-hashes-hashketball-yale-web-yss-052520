@@ -126,4 +126,136 @@ def game_hash
   }
 end
 
+def num_points_scored (player)
+  count = 0
+  while count < game_hash[:home][:players].size do
+    a = game_hash[:home][:players]
+    if a[count][:player_name] == player
+      return a[count][:points]
+    end
+    count += 1
+  end
+
+  count = 0
+  while count < game_hash[:away][:players].size do
+    a = game_hash[:away][:players]
+    if a[count][:player_name] == player
+      return a[count][:points]
+    end
+    count += 1
+  end
+
+end
 # Write code here
+def shoe_size (player)
+  count = 0
+  while count < game_hash[:home][:players].size do
+    a = game_hash[:home][:players]
+    if a[count][:player_name] == player
+      return a[count][:shoe]
+    end
+    count += 1
+  end
+
+  count = 0
+  while count < game_hash[:away][:players].size do
+    a = game_hash[:away][:players]
+    if a[count][:player_name] == player
+      return a[count][:shoe]
+    end
+    count += 1
+  end
+
+end
+
+def team_colors (team)
+  if game_hash[:home][:team_name] == team
+    return game_hash[:home][:colors]
+  end
+
+  if game_hash[:away][:team_name] == team
+    return game_hash[:away][:colors]
+  end
+
+
+end
+
+
+def team_names
+
+  [game_hash[:home][:team_name], game_hash[:away][:team_name]]
+
+
+end
+
+def player_numbers(team)
+
+  if game_hash[:home][:team_name] == team
+    p = game_hash[:home][:players]
+  end
+  if game_hash[:away][:team_name] == team
+    p = game_hash[:away][:players]
+  end
+
+  count = 0
+  output = []
+  while count < p.size do
+    output << p[count][:number]
+    count += 1
+  end
+  output
+
+end
+
+def player_stats (player)
+
+
+  count = 0
+  while count < game_hash[:home][:players].size do
+    a = game_hash[:home][:players]
+    if a[count][:player_name] == player
+      return a[count]
+    end
+    count += 1
+  end
+
+  count = 0
+  while count < game_hash[:away][:players].size do
+    a = game_hash[:away][:players]
+    if a[count][:player_name] == player
+      return a[count]
+    end
+    count += 1
+  end
+
+
+
+
+end
+
+
+def big_shoe_rebounds
+
+  shoe_max = 0
+  n_rebound = 0
+  count = 0
+  while count < game_hash[:home][:players].size do
+    a = game_hash[:home][:players]
+    if a[count][:shoe] > shoe_max
+      shoe_max = a[count][:shoe]
+      n_rebound = a[count][:rebounds]
+    end
+    count += 1
+  end
+
+  count = 0
+  while count < game_hash[:away][:players].size do
+    a = game_hash[:away][:players]
+    if a[count][:shoe] > shoe_max
+      shoe_max = a[count][:shoe]
+      n_rebound = a[count][:rebounds]
+    end
+    count += 1
+  end
+  n_rebound
+end
